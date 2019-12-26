@@ -1,0 +1,17 @@
+#!/bin/bash
+md5save_path="/etc/cronmd5"
+scriptpath="/etc/crontab"
+
+if [ -f $md5save_path ];
+then
+	if ! md5sum -c $md5save_path &> /dev/null
+	then
+		mail -s "/etc/crontab was changed" root <<< 'Hello, file /etc/crontab was changed!'
+		md5sum $scriptpath > $md5save_path
+	fi
+else
+		md5sum $scriptpath > $md5save_path
+fi
+
+# for cron:
+# 0 0 * * * /etc/script.sh

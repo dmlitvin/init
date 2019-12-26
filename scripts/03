@@ -1,0 +1,6 @@
+#!/bin/bash
+if [ ! -d $1 ]; then
+	echo "Directory doesn't exists!"
+else
+	ls -S $1
+fi

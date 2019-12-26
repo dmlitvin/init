@@ -1,0 +1,7 @@
+#!/bin/bash
+
+apt-get update >> /var/log/update_script.log
+apt-get upgrade >> /var/log/update_script.log
+
+# for crontab -e 
+# 0 4 * * 1 /usr/local/bin/up.sh
